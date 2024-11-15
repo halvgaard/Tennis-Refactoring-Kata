@@ -1,21 +1,22 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "tennis-kata"
-version = "0"
+version = "0.0.1"
+package-mode = false
 
-# most requts are deliberately unpinned so we stay up to date with deps,
-# and CI will warn when things change.
-dependencies = [
-    "pytest",
-]
+[tool.poetry.dependencies]
+pytest = "*"
+ruff = ">=0.5.7"
+python = "~3.11.9"
 
-[tool.setuptools]
-packages = []
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
 
-[tool.ruff.lint]
+[tool.ruff]
 select = [
     # pycodestyle
     "E",
@@ -37,6 +38,3 @@ ignore = [
     "PLR2004",  # magic values
 ]
 
-[tool.pyright]
-venvPath = "."
-venv = ".venv"
